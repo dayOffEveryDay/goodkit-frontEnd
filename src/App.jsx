@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react"
+import { Routes, Route } from "react-router-dom"
+import LoginPage from "./pages/LoginPage"
+import RoleSelectPage from "./pages/RoleSelectPage"
+import PublisherTasksPage from "./pages/PublisherTasksPage"
+import ExecutorBindPage from "./pages/ExecutorBindPage"
+import ExecutorTasksPage from "./pages/ExecutorTasksPage"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      {/* 首頁：登入頁（現在的 App.jsx 畫面可以搬去 LoginPage） */}
+      <Route path="/" element={<LoginPage />} />
+
+      {/* 第一層：角色選擇 */}
+      <Route path="/role-select" element={<RoleSelectPage />} />
+
+      {/* 發布者：任務管理頁 */}
+      <Route path="/publisher/tasks" element={<PublisherTasksPage />} />
+
+      {/* 執行者：綁定發布者 + 任務列表 */}
+      <Route path="/executor/bind" element={<ExecutorBindPage />} />
+      <Route path="/executor/tasks" element={<ExecutorTasksPage />} />
+    </Routes>
   )
 }
 

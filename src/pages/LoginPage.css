@@ -1,0 +1,90 @@
+/* 讓整個背景吃滿畫面，做出原本的漸層背景 */
+.login-layout {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* 讓卡片置中 */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+/* 卡片不要撐滿整個畫面，限制一下最大寬度 */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+/* Logo 區塊 */
+.login-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo-img {
+  width: 50%;      /* ⭐ 站卡片的 25% */
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* 標題 + 文案置中 */
+.login-title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* 按鈕區：縱向排列、間距 */
+.login-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 各種登入按鈕樣式，可以依你原本的改 */
+
+.btn-line {
+  background-color: #06c755;
+  border-color: #06c755;
+}
+
+.btn-line:hover,
+.btn-line:focus {
+  background-color: #05a847;
+  border-color: #05a847;
+}
+
+.btn-google {
+  background-color: #ffffff;
+  border-color: #d9d9d9;
+}
+
+.btn-facebook {
+  background-color: #1877f2;
+  border-color: #1877f2;
+  color: #ffffff;
+}
+
+.btn-facebook:hover,
+.btn-facebook:focus {
+  background-color: #145dbf;
+  border-color: #145dbf;
+}
+
+/* 手機小螢幕時稍微放大 Logo */
+@media (max-width: 768px) {
+  .logo-img {
+    width: 120px;
+    height: 120px;
+  }
+}
