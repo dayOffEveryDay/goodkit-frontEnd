@@ -1,0 +1,38 @@
+.miniCard {
+  flex: 1;
+  min-width: 220px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.miniCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.08);
+}
+
+.miniCard.active {
+  outline: 2px solid rgba(111, 103, 187, 0.45);
+}
+
+.miniIcon {
+  font-size: 28px;
+}
+
+.miniTitle {
+  font-weight: 800;
+  color: #2f2a25;
+}
+
+.miniSub {
+  font-size: 12px;
+  color: rgba(47, 42, 37, 0.55);
+  margin-top: 4px;
+}

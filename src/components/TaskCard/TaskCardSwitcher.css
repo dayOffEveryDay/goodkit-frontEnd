@@ -1,0 +1,31 @@
+/* 整個區塊的內容寬度：不要讓它吃滿全螢幕 */
+.taskBoardWrap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 24px; /* 外圍留白 */
+  box-sizing: border-box;
+}
+
+/* 內容容器：主卡 + 小卡都會跟著這個寬度 */
+.switcher{
+  width: 100%;
+  max-width: 980px;  /* 你要更像圖可以 900~1050 自己調 */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 小卡列：不要被撐爆 */
+.miniRow{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* RWD：窄螢幕變 1 欄 */
+@media (max-width: 900px){
+  .miniRow{
+    grid-template-columns: 1fr;
+  }
+}

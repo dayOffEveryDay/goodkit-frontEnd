@@ -28,7 +28,7 @@ function LoginPage() {
     console.log("LINE Login clicked");
     // TODO: 之後接真正的 LINE 登入
     // 目前假裝登入成功，直接進角色選擇
-    navigate("/role-select");
+    navigate("/mainPage");
   };
 
   return (
