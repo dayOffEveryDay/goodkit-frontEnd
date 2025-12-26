@@ -1,0 +1,63 @@
+/* ===== Theme Variables ===== */
+.theme-light {
+  --bg-page: #f3f6fb;
+  --bg-card: #ffffff;
+  --bg-card-sub: #f7f7f7;
+
+  --text-main: #1f1f1f;
+  --text-sub: #666666;
+
+  --border-card: #eaeaea;
+}
+
+.theme-dark {
+  --bg-page: #0f1115;
+  --bg-card: #1c1f26;
+  --bg-card-sub: #262a33;
+
+  --text-main: #f1f1f1;
+  --text-sub: #a0a0a0;
+
+  --border-card: #2c2f36;
+}
+
+/* 讓整頁背景吃主題 */
+body {
+  background: var(--bg-page);
+}
+
+/* 右上角切換鈕 */
+.themeToggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+}
+
+/* 主卡容器：桌機 70vw，上下限控制 */
+.mainWrap {
+  width: clamp(720px, 70vw, 1140px);
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* 小卡容器：合起來同寬或略寬 */
+.miniWrap {
+  width: clamp(720px, 74vw, 1200px);
+  margin: 16px auto 0;
+  padding: 0 16px;
+}
+
+/* 手機：主卡 90% 寬，小卡直排（靠 xs=24） */
+@media (max-width: 576px) {
+  .mainWrap,
+  .miniWrap {
+    width: 90vw;
+    padding: 16px 12px;
+  }
+}
+@media (max-width: 576px) {
+  .mainWrap {
+    padding-top: 56px; /* 原本是 16px/24px，這裡加高，避免被 Switch 壓到 */
+  }
+}
