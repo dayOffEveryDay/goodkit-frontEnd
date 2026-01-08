@@ -1,63 +1,203 @@
 /* ===== Theme Variables ===== */
 .theme-light {
-  --bg-page: #f3f6fb;
-  --bg-card: #ffffff;
-  --bg-card-sub: #f7f7f7;
+    --bg-page: #f3f6fb;
+    --bg-card: #ffffff;
+    --bg-card-sub: #f7f7f7;
 
-  --text-main: #1f1f1f;
-  --text-sub: #666666;
+    --text-main: #1f1f1f;
+    --text-sub: #666666;
 
-  --border-card: #eaeaea;
+    --border-card: #eaeaea;
 }
 
 .theme-dark {
-  --bg-page: #0f1115;
-  --bg-card: #1c1f26;
-  --bg-card-sub: #262a33;
+    --bg-page: #0f1115;
+    --bg-card: #1c1f26;
+    --bg-card-sub: #262a33;
 
-  --text-main: #f1f1f1;
-  --text-sub: #a0a0a0;
+    --text-main: #f1f1f1;
+    --text-sub: #a0a0a0;
 
-  --border-card: #2c2f36;
+    --border-card: #2c2f36;
 }
 
 /* 讓整頁背景吃主題 */
 body {
-  background: var(--bg-page);
+    background: var(--bg-page);
+}
+
+/* 頂部容器：會佔高度 */
+.topBar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 56px;
+
+    background: var(--bg-page);
+    /* 跟頁面一致 */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding: 0 16px;
+    box-sizing: border-box;
 }
 
 /* 右上角切換鈕 */
 .themeToggle {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 1000;
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 1000;
 }
 
 /* 主卡容器：桌機 70vw，上下限控制 */
 .mainWrap {
-  width: clamp(720px, 70vw, 1140px);
-  margin: 0 auto;
-  padding: 24px 16px;
+    width: clamp(320px, 70vw, 1140px);
+    margin: 0 auto;
+    padding: 24px 16px;
 }
 
 /* 小卡容器：合起來同寬或略寬 */
 .miniWrap {
-  width: clamp(720px, 74vw, 1200px);
-  margin: 16px auto 0;
-  padding: 0 16px;
+    width: clamp(320px, 70vw, 1140px);
+    margin: 16px auto 0;
+    padding: 0 16px;
 }
+
+
+
 
 /* 手機：主卡 90% 寬，小卡直排（靠 xs=24） */
 @media (max-width: 576px) {
-  .mainWrap,
-  .miniWrap {
-    width: 90vw;
-    padding: 16px 12px;
-  }
+
+    .mainWrap,
+    .miniWrap {
+        width: 90vw;
+        padding: 16px 12px;
+    }
+
+    .topBar {
+        height: 56px;
+        padding: 0 12px;
+    }
 }
+
 @media (max-width: 576px) {
-  .mainWrap {
-    padding-top: 56px; /* 原本是 16px/24px，這裡加高，避免被 Switch 壓到 */
-  }
+    .mainWrap {
+        padding-top: 12px;
+        /* 原本是 16px/24px，這裡加高，避免被 Switch 壓到 */
+    }
+}
+
+/* ====== 讓 antd 的浮層/按鈕在暗色下文字一致（最小覆蓋） ====== */
+body.theme-dark .ant-popover .ant-popover-inner {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+}
+
+body.theme-dark .ant-popover .ant-popover-title,
+body.theme-dark .ant-popover .ant-popover-inner-content {
+    color: var(--text-main);
+}
+
+body.theme-dark .ant-popover .ant-btn-default {
+    color: var(--text-main);
+    border-color: var(--border-card);
+    background: transparent;
+}
+
+body.theme-dark .ant-popover .ant-btn-default:hover {
+    color: var(--text-main);
+    border-color: var(--text-main);
+}
+
+/* disabled button 在暗色下避免變成「灰底黑字」 */
+body.theme-dark .ant-btn:disabled,
+body.theme-dark .ant-btn[disabled] {
+    color: var(--text-sub) !important;
+    border-color: var(--border-card) !important;
+    background: transparent !important;
+}
+
+/* ===== antd 元件暗色修正（Shop / Task 共用） ===== */
+
+/* List Item */
+body.theme-dark .ant-list-item {
+  color: var(--text-main);
+}
+
+/* Tag */
+body.theme-dark .ant-tag {
+  color: var(--text-main);
+  background: var(--bg-card-sub);
+  border-color: var(--border-card);
+}
+
+/* Tag icon */
+body.theme-dark .ant-tag svg {
+  color: var(--text-main);
+}
+
+/* Popconfirm 文字 */
+body.theme-dark .ant-popover .ant-popover-inner-content {
+  color: var(--text-main);
+}
+
+/* Switch 說明文字 */
+body.theme-dark .ant-switch + span {
+  color: var(--text-main);
+}
+/* ===== antd 空狀態（Empty/List emptyText）暗色修正 ===== */
+body.theme-dark .ant-list-empty-text,
+body.theme-dark .ant-empty-description,
+body.theme-dark .ant-empty .ant-empty-description {
+  color: var(--text-sub) !important;
+}
+
+/* 空狀態 icon（可選）也別太黑 */
+body.theme-dark .ant-empty-image svg {
+  fill: var(--text-sub) !important;
+}
+/* ===== antd Popconfirm 按鈕暗色修正（返回/取消看得清） ===== */
+body.theme-dark .ant-popconfirm .ant-btn-default,
+body.theme-dark .ant-popconfirm-buttons .ant-btn-default {
+  color: var(--text-main) !important;
+  border-color: var(--border-card) !important;
+  background: transparent !important; /* 取消白底 */
+}
+
+body.theme-dark .ant-popconfirm .ant-btn-default:hover,
+body.theme-dark .ant-popconfirm-buttons .ant-btn-default:hover {
+  color: var(--text-main) !important;
+  border-color: var(--text-main) !important;
+  background: transparent !important;
+}
+
+/* Popconfirm 的 primary（確認/兌換）通常 ok，但也一併保險一下字色 */
+body.theme-dark .ant-popconfirm .ant-btn-primary,
+body.theme-dark .ant-popconfirm-buttons .ant-btn-primary {
+  color: var(--text-main) !important;
+}
+body.theme-dark .ant-popover-message-title,
+body.theme-dark .ant-popconfirm-title {
+  color: var(--text-main) !important;
+}
+
+/* ===== Popconfirm / Popover message 區塊：文字顏色修正（暗色） ===== */
+body.theme-dark .ant-popover-message,
+body.theme-dark .ant-popover-message > .anticon,
+body.theme-dark .ant-popover-message-title,
+body.theme-dark .ant-popover-message-text,
+body.theme-dark .ant-popconfirm-message,
+body.theme-dark .ant-popconfirm-message-title,
+body.theme-dark .ant-popconfirm-description {
+  color: var(--text-main) !important;
+}
+
+/* 有些版本會把描述放在 ant-popover-inner-content 裡的 p/span */
+body.theme-dark .ant-popover-inner-content,
+body.theme-dark .ant-popover-inner-content p,
+body.theme-dark .ant-popover-inner-content span {
+  color: var(--text-main) !important;
 }
