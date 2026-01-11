@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, Row, Col, Typography, Space, List, Tag, Spin, Switch, Button, message, Popconfirm } from "antd";
+import { Card, Row, Col, Typography, Space, Spin, Switch,  message } from "antd";
 import "./HomePage.css";
 import { CARD_TYPE } from "../constants/cardType";
 import TaskList from "./panels/TaskList";
@@ -68,7 +68,7 @@ const api = {
     },
 };
 
-export default function HomePage() {
+export default function HomePage({ theme, setTheme }) {
     const [cards, setCards] = useState([]);
     const [activeType, setActiveType] = useState(CARD_TYPE.TASK_LIST);
 
@@ -76,8 +76,6 @@ export default function HomePage() {
     const [loading, setLoading] = useState(false);
     const [submittingId, setSubmittingId] = useState(null);
 
-    // theme: "light" | "dark"
-    const [theme, setTheme] = useState("light");
 
     // 套用主題到 body
     useEffect(() => {

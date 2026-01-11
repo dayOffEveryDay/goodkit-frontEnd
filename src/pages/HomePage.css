@@ -184,20 +184,4 @@ body.theme-dark .ant-popconfirm-title {
   color: var(--text-main) !important;
 }
 
-/* ===== Popconfirm / Popover message 區塊：文字顏色修正（暗色） ===== */
-body.theme-dark .ant-popover-message,
-body.theme-dark .ant-popover-message > .anticon,
-body.theme-dark .ant-popover-message-title,
-body.theme-dark .ant-popover-message-text,
-body.theme-dark .ant-popconfirm-message,
-body.theme-dark .ant-popconfirm-message-title,
-body.theme-dark .ant-popconfirm-description {
-  color: var(--text-main) !important;
-}
 
-/* 有些版本會把描述放在 ant-popover-inner-content 裡的 p/span */
-body.theme-dark .ant-popover-inner-content,
-body.theme-dark .ant-popover-inner-content p,
-body.theme-dark .ant-popover-inner-content span {
-  color: var(--text-main) !important;
-}
