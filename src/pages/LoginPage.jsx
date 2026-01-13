@@ -12,6 +12,7 @@ import "./LoginPage.css"; // 我們等一下會建這個檔
 import api from "../api";
 const { Content } = Layout;
 const { Title, Text } = Typography;
+const baseURL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
 
 const COPY = {
   prompt: "請選擇登入方式",
@@ -25,6 +26,8 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handleLineLogin = () => {
+    // 直接導向後端 OAuth2 授權入口
+    window.location.href = `${baseURL}/oauth2/authorization/line`;
     console.log("LINE Login clicked");
     // TODO: 之後接真正的 LINE 登入
     // 目前假裝登入成功，直接進角色選擇
